@@ -22,12 +22,11 @@ fn main() {
                 String::new()
             });
 
-            // TODO: Uncomment the code below to pass the first stage
             if !file_contents.is_empty() {
                 for c in file_contents.chars() {
                     match c {
                         '(' => println!("LEFT_PAREN ( null"),
-                        ')' => println!("RIGHT_PAREN ( null"),
+                        ')' => println!("RIGHT_PAREN ) null"),
                         _ => {}
                     }
                 }
