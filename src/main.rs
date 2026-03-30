@@ -20,6 +20,8 @@ fn main() {
                 String::new()
             });
 
+            let mut is_err = false;
+
             if !file_contents.is_empty() {
                 let mut line_no = 0;
                 for line in file_contents.lines() {
@@ -41,7 +43,10 @@ fn main() {
                             '*' => println!("STAR * null"),
                             '/' => println!("SLUSH / null"),
 
-                            _ => eprintln!("[line {}] Error: Unexpected character: {}", line_no, c),
+                            _ => {
+                                eprintln!("[line {}] Error: Unexpected character: {}", line_no, c);
+                                is_err = true;
+                            }
                         }
                     }
 
@@ -50,7 +55,12 @@ fn main() {
             } else {
                 println!("EOF  null"); // Placeholder, replace this line when implementing the scanner
             }
+
+            if is_err {
+                std::process::exit(65);
+            }
         }
+
         _ => {
             eprintln!("Unknown command: {}", command);
         }
