@@ -33,8 +33,12 @@ fn main() {
 
                         '.' => println!("DOT . null"),
                         ',' => println!("COMMA , null"),
+                        ';' => println!("SEMICOLON ; null"),
+
                         '+' => println!("PLUS + null"),
+                        '-' => println!("MINUS - null"),
                         '*' => println!("STAR * null"),
+                        '/' => println!("SLUSH / null"),
 
                         _ => {}
                     }
