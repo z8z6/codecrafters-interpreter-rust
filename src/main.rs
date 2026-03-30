@@ -14,8 +14,6 @@ fn main() {
 
     match command.as_str() {
         "tokenize" => {
-            // You can use print statements as follows for debugging, they'll be visible when running tests.
-            eprintln!("Logs from your program will appear here!");
 
             let file_contents = fs::read_to_string(filename).unwrap_or_else(|_| {
                 eprintln!("Failed to read file {}", filename);
@@ -23,25 +21,30 @@ fn main() {
             });
 
             if !file_contents.is_empty() {
-                for c in file_contents.chars() {
-                    match c {
-                        '(' => println!("LEFT_PAREN ( null"),
-                        ')' => println!("RIGHT_PAREN ) null"),
+                let mut line_no = 0;
+                for line in file_contents.lines() {
+                    line_no += 1;
+                    for c in line.chars(){
+                        match c {
+                            '(' => println!("LEFT_PAREN ( null"),
+                            ')' => println!("RIGHT_PAREN ) null"),
 
-                        '{' => println!("LEFT_BRACE {{ null"),
-                        '}' => println!("RIGHT_BRACE }} null"),
+                            '{' => println!("LEFT_BRACE {{ null"),
+                            '}' => println!("RIGHT_BRACE }} null"),
 
-                        '.' => println!("DOT . null"),
-                        ',' => println!("COMMA , null"),
-                        ';' => println!("SEMICOLON ; null"),
+                            '.' => println!("DOT . null"),
+                            ',' => println!("COMMA , null"),
+                            ';' => println!("SEMICOLON ; null"),
 
-                        '+' => println!("PLUS + null"),
-                        '-' => println!("MINUS - null"),
-                        '*' => println!("STAR * null"),
-                        '/' => println!("SLUSH / null"),
+                            '+' => println!("PLUS + null"),
+                            '-' => println!("MINUS - null"),
+                            '*' => println!("STAR * null"),
+                            '/' => println!("SLUSH / null"),
 
-                        _ => {}
+                            _ => eprintln!("[line {}] Error: Unexpected character: {}", line_no, c),
+                        }
                     }
+
                 }
                 println!("EOF  null");
             } else {
